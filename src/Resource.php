@@ -138,6 +138,11 @@ class Resource
             ->first();
     }
 
+    public function viewModel(): ?string
+    {
+        return $this->config->get('view_model');
+    }
+
     public function hasPublishStates(): bool
     {
         return is_string($published = $this->config->get('published'))

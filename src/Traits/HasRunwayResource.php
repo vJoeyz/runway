@@ -74,6 +74,11 @@ trait HasRunwayResource
         return 'published';
     }
 
+    public function viewModel(): string
+    {
+        return $this->runwayResource()->viewModel();
+    }
+
     public function scopeWhereStatus(Builder $query, string $status): void
     {
         if (! $this->runwayResource()->hasPublishStates()) {

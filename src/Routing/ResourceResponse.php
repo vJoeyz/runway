@@ -6,6 +6,7 @@ use Facades\Statamic\View\Cascade;
 use Illuminate\Contracts\Support\Responsable;
 use Statamic\Events\ResponseCreated;
 use Statamic\Facades\Site;
+use Statamic\Fields\Value;
 use Statamic\View\View;
 
 class ResourceResponse implements Responsable
@@ -51,6 +52,8 @@ class ResourceResponse implements Responsable
 
     protected function contents()
     {
+        $this->data->view_model = new Value($this->data->viewModel()); // I don't know what I'm doing
+
         $contents = (new View)
             ->template($this->data->template())
             ->layout($this->data->layout())
